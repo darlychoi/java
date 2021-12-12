@@ -1,0 +1,46 @@
+package xml;
+import java.io.InputStream;
+import java.util.List;
+
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
+
+
+public class Testxml_2 {	
+  
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) throws Exception {
+		// 1.加载xml文件到jvm中，形成数据流
+		InputStream xml = Testxml_2.class.getClassLoader().getResourceAsStream("demon1.xml");
+		
+		//2、创建解析对象
+		SAXReader sax= new SAXReader();
+		
+		//3、获取文档对象（整过xml文件）[将数据流转换成一个文档对象]
+		Document doc = sax.read(xml);
+		
+		//4. 获得根元素
+		
+		Element root = doc.getRootElement();
+		//5.获得根元素下的所有子元素
+		List<Element>  list = root.elements();
+		// 与上句作用相同，这里只是体现列表的一种定义方式，使用？代表列表元素类型根据上下文自动定义
+//		List<?> list=root.elements();      
+//		System.out.println(list.size());		
+//		list.forEach(s -> System.out.println(s));   //Lambda 表达式是一种匿名函数
+		
+		for (Object e1:list) {
+			// Element E1= (Element)e1;    //只有上面获取元素使用？的方式是，需要强制转换为Element类型
+			System.out.println("一级元素"+e1);
+			List<Element> list2 = ((Element) e1).elements();
+			for (Object e2: list2) {
+				Element E2=(Element)e2;
+				System.out.println("二级元素"+E2.getName()+":"+E2.getData());		
+			}
+		}
+		
+	}
+ 
+}

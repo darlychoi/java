@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tts docId="7c2daf76-51ca-44a2-9cb8-826de47a6a89" docType="Relation" docOwner="A9" docVersion="5.0">
+	<Relations>
+		<Relation Id="b1dd9885-1a8f-4530-99c7-6598fb813797" ProductCode="YY002" ProduceCorpCode="f001" ProduceBatchNo="PC2112100000" ProduceLicense="无" ProduceWorkline="03" ProduceWorkman="YL" OuterPackage="10卷:10提:1箱" ProduceDate="2021-12-10" ExpireDate="2022-12-10" OperateDate="2020-09-27T18:00:00" Operator="无" Description="无"
+                  WorkOrder="ERP工单号" WorkOrderBatch="工单批次" EndBatch="false" CodeAmounts="" AssistLine="">
+			
+		</Relation>
+	</Relations>
+</tts>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+	<student>
+		<name>a</name>
+		<age>11</age>
+	</student>
+	<student>
+		<name>b</name>
+		<age>22</age>
+	</student>
+	<student>
+		<name>c</name>
+		<age>33</age>
+	</student>
+	<beast>
+		<name>d</name>
+		<age>44</age>
+	</beast>
+	<beast>
+		<name>e</name>
+		<age>55</age>
+	</beast>
+</students>

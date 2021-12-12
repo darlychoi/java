@@ -1,0 +1,25 @@
+package com.darly.xmltraining;
+
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.junit.Test;
+import org.w3c.dom.Document;
+
+/**
+ * 使用jdk自带的dom技术读写xml
+ * 
+*/
+public class DomTest {
+	@Test
+	public void testRead() throws Exception{
+//		DocumentBuilder的工厂类，专门用来生成DocumentBuilder
+		DocumentBuilderFactory def=DocumentBuilderFactory.newInstance();
+		//用来构建Document
+		DocumentBuilder documentBuilder = def.newDocumentBuilder();	
+		Document document=documentBuilder.parse(uri:);
+		//Document Node Element getElementsByTagName w3c规范里的
+				
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;TTS_20211206-0227.XML&apos; to &apos;xmltraining/src&apos;&#x0D;&#x0A;- Original project: &apos;xmltraining&apos;&#x0D;&#x0A;- Destination element: &apos;xmltraining/src&apos;&#x0D;&#x0A;- Original element: &apos;TTS_20211206-0227.XML&apos;" description="Copy file" destination="/src" element1="src/TTS_20211206-0227.XML" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1639301100458" units="0" version="1.0"/>
+</session>

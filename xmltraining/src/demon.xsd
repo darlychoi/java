@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="https://www.we.org/2001/xmlSchema"
+	targetNamespace="http://www.example.org/demon"
+	xmlns:tns="http://www.example.org/demon" elementFormDefault="qualified"> 
+	<xs:element name="NBA">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="star" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:element name="starname" type="xs:string" />
+						<xs:element name="no" type="xs:string" />
+						
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

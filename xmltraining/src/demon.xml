@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	这是注释
+	定义一个xml文件，描述自己的家庭
+	家庭成员
+	每个人都有姓名职业
+-->
+<!--  -->
+<NBA 
+	xmlns="http://www.w3school.com.cn"
+	xmlns="https://www.we.org/2001/xmlSchema"
+	xsi:schemaLoaction="http://www.w3school.com.cn demon.xsd"
+>
+	<star>
+		<starname></starname>
+		<no></no>
+		
+	</star>
+</NBA>
+

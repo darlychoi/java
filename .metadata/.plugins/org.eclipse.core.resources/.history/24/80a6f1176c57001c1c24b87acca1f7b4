@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8">
+<content>
+	<webSite>https://www.baidu.com</webSite>
+	<desc>Java 操作xml文件</desc>
+	<owner>darly</owner>
+	<detail>
+		<videos desc="视频列表">
+			<videos desc="xml视频教程">
+			<chapter id="1">1. java操作xml相关技术概览</chapter>
+			<chapter id="2">2.dom读写xml</chapter>
+			</videos>
+			<videos id="8099" name="httpclient视频教程">
+				<chapter id="1">14.发送上传文件的post请求</chapter>
+				<chapter id="2">15.为何要绕过HTTS安全认证</chapter>
+				<chapter id="2">16.httpclient链接池和通用工具类封装</chapter>
+			</videos>
+		</videos>
+		<projects>
+			<project>
+				<id>1</id>
+				<name>学生成绩管理</name>
+			</project>
+			<project>
+				<id>2</id>
+				<name>游戏成绩</name>
+			</project>
+		</projects>
+	</detail>
+</content>
