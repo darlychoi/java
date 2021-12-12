@@ -97,18 +97,46 @@ public class Testxml_1 {
 		relationNode.addAttribute("OperateDate", todayTime);            //设置操作日期
 
 		Element codesNode = (Element) relations.selectSingleNode("//codes");
-		int requestNumer = 1;
-		int createNum = 1;
-		for (int i=1; i<rateList.length; i++ ) {
-			for(int j=1; i<10; j++) {}
+		int level1code = 100000;
+		int level2code = 200000;
+		int level3code = 300000;
+		int level4code = 400000;
+		int level5code = 500000;
+		int level6code = 600000;
+		int level7code = 700000;
+		int countTemp =1;
+		
+		for (int i=1; i<=11; i++ ) {
 			Element codeElement=codesNode.addElement("code");
-			codeElement.addAttribute("Id", "YY01");            //设置追溯码
+			codeElement.addAttribute("Id", String.valueOf(level1code));            //设置追溯码
 			codeElement.addAttribute("Level", "YY01");            //设置追溯码
-			codeElement.addAttribute("ParentId", "");            //设置追溯码
+			switch(2){				
+			case 2:
+				if (i%11!=1) {
+					codeElement.addAttribute("ParentId", String.valueOf(level2code));            //设置追溯码
+				}else {
+					codeElement.addAttribute("ParentId", ""); 
+				};
+			case 3:
+			case 4:
+				
+		}
+			
 			codeElement.addAttribute("ScanTime", todayTime);            //设置追溯码
 			codeElement.addAttribute("ProduceTime", todayTime);            //设置追溯码
 			codeElement.addAttribute("ProduceMemo", "I");            //设置追溯码
+			level1code+=1;
+			switch(2){				
+			case 2:
+				if (i%12==0){
+					level2code+=1;	
+					};
+			case 3:				
+			case 4:
+		}
+			
 		};
+
 		
 
 

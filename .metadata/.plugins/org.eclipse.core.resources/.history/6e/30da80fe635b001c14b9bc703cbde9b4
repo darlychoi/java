@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.dom4j.Document;
@@ -47,15 +49,26 @@ public class Testxml_1 {
 		 
 		 //拆分包装比例并计算码数量
 		 String packagerate ="10个:10盒:1箱";
-		 String[] ll=packagerate.split(":");
-		 for(int i=0;i<ll.length;i++)
+		 String[] rateList=packagerate.split(":");
+		 //获取各级包装比例
+		 List levelrateList = new ArrayList(); // 创建集合
+		 for(int i=0;i<rateList.length;i++)
 		 {
-		  System.out.println(ll[i]); 		  
-		  System.out.println(ll[i].substring(0,ll[i].length()-1) );
-		  
-		  
-		  
-		 }
+		  	  levelrateList.add(rateList[i].substring(0, rateList[i].length()-1));
+		  	System.out.println(i);
+		 };
+		 System.out.println(levelrateList.size());
+		 //计算各级码数量
+		 List codeCountList = new ArrayList(); // 创建集合
+		 int count=1;
+		 for(int i=rateList.length-1;i>=0;i--)
+		 {
+		  	 int countTemp = Integer.parseInt((String) levelrateList.get(i));
+//		  	 System.out.println(countTemp);
+			 count *=countTemp;
+			 codeCountList.add(count);		
+		 };
+//		 System.out.println("三级码"+codeCountList.get(0)+"二级码"+codeCountList.get(1)+"一级码"+codeCountList.get(2));
 		 
 		
 		// 1.加载xml文件到jvm中，形成数据流
@@ -84,13 +97,14 @@ public class Testxml_1 {
 		relationNode.addAttribute("OperateDate", todayTime);            //设置操作日期
 
 		Element codesNode = (Element) relations.selectSingleNode("//codes");
-//		Element codeElement=codesNode.addElement("code");
-		
-		for (int i=1; i<10; i++ ) {
+		int requestNumer = 1;
+		int createNum = 1;
+		for (int i=1; i<rateList.length; i++ ) {
+			for(int j=1; i<10; j++) {}
 			Element codeElement=codesNode.addElement("code");
 			codeElement.addAttribute("Id", "YY01");            //设置追溯码
 			codeElement.addAttribute("Level", "YY01");            //设置追溯码
-			codeElement.addAttribute("ParentId", "YY01");            //设置追溯码
+			codeElement.addAttribute("ParentId", "");            //设置追溯码
 			codeElement.addAttribute("ScanTime", todayTime);            //设置追溯码
 			codeElement.addAttribute("ProduceTime", todayTime);            //设置追溯码
 			codeElement.addAttribute("ProduceMemo", "I");            //设置追溯码
