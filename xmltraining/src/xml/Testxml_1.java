@@ -48,7 +48,7 @@ public class Testxml_1 {
 //		 System.out.println(batchNo);
 		 
 		 //拆分包装比例并计算码数量
-		 String packagerate ="10个:10盒:1箱";
+		 String packagerate ="10个:1盒";
 		 String[] rateList=packagerate.split(":");
 		 //获取各级包装比例
 		 List levelrateList = new ArrayList(); // 创建集合
@@ -68,8 +68,14 @@ public class Testxml_1 {
 			 count *=countTemp;
 			 codeCountList.add(count);		
 		 };
-//		 System.out.println("三级码"+codeCountList.get(0)+"二级码"+codeCountList.get(1)+"一级码"+codeCountList.get(2));
-		 
+		 int Amount = 0;
+		 for(int i=0;i<codeCountList.size();i++)
+		 {
+			 Amount += Integer.parseInt(String.valueOf(codeCountList.get(i)) );
+		 };
+		 int requestAmount = 10*Amount;
+		 System.out.println("单元总数"+requestAmount);
+		 		 
 		
 		// 1.加载xml文件到jvm中，形成数据流
 		InputStream xml = Testxml_1.class.getClassLoader().getResourceAsStream("TTS_20211206-0227.XML");
@@ -97,25 +103,39 @@ public class Testxml_1 {
 		relationNode.addAttribute("OperateDate", todayTime);            //设置操作日期
 
 		Element codesNode = (Element) relations.selectSingleNode("//codes");
-		int level1code = 100000;
-		int level2code = 200000;
-		int level3code = 300000;
-		int level4code = 400000;
-		int level5code = 500000;
-		int level6code = 600000;
-		int level7code = 700000;
-		int countTemp =1;
+		String level1code = "110001f0012021121316151111139";
+		String level2code = "210001f0012021121316160000001";
+
 		
-		for (int i=1; i<=11; i++ ) {
-			Element codeElement=codesNode.addElement("code");
-			codeElement.addAttribute("Id", String.valueOf(level1code));            //设置追溯码
-			codeElement.addAttribute("Level", "YY01");            //设置追溯码
+		for (int i=1; i<=requestAmount; i++ ) {
+			Element codeElement=codesNode.addElement("code");		
+			
 			switch(2){				
 			case 2:
+				if (i%12==0){
+					String frontcode2 = level2code.substring(0,22);
+//					String lastcode2 =Integer.toString(Integer.parseInt(level2code.substring(22))+1);
+					String lastcode2 =String.format("%07d", Integer.parseInt(level2code.substring(22))+1);   //将数字转换成字符串，长度不足自动补零。
+					if (lastcode2.substring(lastcode2.length()-1).equals("0")){
+//						lastcode2 =Integer.toString(Integer.parseInt(lastcode2)+1);	
+						lastcode2 = String.format("%07d", Integer.parseInt(lastcode2)+1);
+						};
+					level2code = frontcode2 + lastcode2;
+					};
 				if (i%11!=1) {
-					codeElement.addAttribute("ParentId", String.valueOf(level2code));            //设置追溯码
-				}else {
-					codeElement.addAttribute("ParentId", ""); 
+					codeElement.addAttribute("Id", level1code);            //设置追溯码
+					codeElement.addAttribute("ParentId", String.valueOf(level2code)); 
+					codeElement.addAttribute("Level", "1");            //设置追溯码
+					String frontcode = level1code.substring(0,22);
+					String lastcode =Integer.toString(Integer.parseInt(level1code.substring(22))+1);
+					if (lastcode.substring(lastcode.length()-1).equals("0")){
+						lastcode =Integer.toString(Integer.parseInt(lastcode)+1);	
+						};
+					level1code = frontcode + lastcode;
+				}else {				
+					codeElement.addAttribute("Id", level2code);            //设置追溯码
+					codeElement.addAttribute("ParentId", "");            //设置追溯码
+					codeElement.addAttribute("Level", "2");            //设置追溯码
 				};
 			case 3:
 			case 4:
@@ -124,16 +144,7 @@ public class Testxml_1 {
 			
 			codeElement.addAttribute("ScanTime", todayTime);            //设置追溯码
 			codeElement.addAttribute("ProduceTime", todayTime);            //设置追溯码
-			codeElement.addAttribute("ProduceMemo", "I");            //设置追溯码
-			level1code+=1;
-			switch(2){				
-			case 2:
-				if (i%12==0){
-					level2code+=1;	
-					};
-			case 3:				
-			case 4:
-		}
+			codeElement.addAttribute("ProduceMemo", "I");            //设置追溯码			
 			
 		};
 
